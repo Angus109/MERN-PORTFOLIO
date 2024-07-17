@@ -2,3 +2,5 @@ backend/node_modules
 portfolio/node_modules
 dashboard/node_modules
 backend/config.env
+backend/.env
+.env
