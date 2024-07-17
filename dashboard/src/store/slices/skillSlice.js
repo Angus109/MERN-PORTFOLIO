@@ -103,7 +103,7 @@ export const addNewSkill = (data) => async (dispatch) => {
   dispatch(skillSlice.actions.addNewSkillRequest());
   try {
     const response = await axios.post(
-      "https://mern-stack-portfolio-backend-code.onrender.com/api/v1/skill/add",
+      "https://mern-portfolio-0moh.onrender.com/api/v1/skill/add",
       data,
       {
         withCredentials: true,
@@ -123,7 +123,7 @@ export const updateSkill = (id, proficiency) => async (dispatch) => {
   dispatch(skillSlice.actions.updateSkillRequest());
   try {
     const response = await axios.put(
-      `https://mern-stack-portfolio-backend-code.onrender.com/api/v1/skill/update/${id}`,
+      `https://mern-portfolio-0moh.onrender.com/api/v1/skill/update/${id}`,
       { proficiency },
       {
         withCredentials: true,
@@ -141,7 +141,7 @@ export const deleteSkill = (id) => async (dispatch) => {
   dispatch(skillSlice.actions.deleteSkillRequest());
   try {
     const response = await axios.delete(
-      `https://mern-stack-portfolio-backend-code.onrender.com/api/v1/skill/delete/${id}`,
+      `https://mern-portfolio-0moh.onrender.com/api/v1/skill/delete/${id}`,
       {
         withCredentials: true,
       }

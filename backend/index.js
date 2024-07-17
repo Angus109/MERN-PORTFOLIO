@@ -1,7 +1,7 @@
 import app from "./app.js";
 import cloudinary from "cloudinary";
 
-const PORT = process.env.PORT || 3500  || 4000;
+const PORT = process.env.PORT || 3500  || 4000 || 5000;
 
 cloudinary.v2.config({
   cloud_name: process.env.CLOUD_NAME,

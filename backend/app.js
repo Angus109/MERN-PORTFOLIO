@@ -13,10 +13,10 @@ import projectRouter from "./routes/projectRouter.js";
 import userRouter from "./routes/userRouter.js";
 
 const app = express();
-dotenv.config({ path: "config.env" });
-const PORTFOLIO_URL = "";
-const DASHBOARD_URL = "http://localhost:5173";
-const BACKEND_URL = "http://localhost:3500";
+dotenv.config({path: "config.env" });
+const PORTFOLIO_URL = process.env.PORTFOLIO_URL;
+const DASHBOARD_URL = process.env.DASHBOARD_URL;
+const BACKEND_URL = process.env.BACKEND_URL;
 
 app.use(
   cors({

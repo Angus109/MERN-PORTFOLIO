@@ -15,7 +15,8 @@ const ProjectView = () => {
   const [projectBanner, setProjectBanner] = useState("");
   const [projectBannerPreview, setProjectBannerPreview] = useState("");
   const { id } = useParams();
-  const domain= ""
+  
+  const domain = process.env.BACKEND_URL;
 
   useEffect(() => {
     const getProject = async () => {

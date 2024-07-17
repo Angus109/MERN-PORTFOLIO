@@ -10,7 +10,8 @@ const Contact = () => {
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
-   const domain = "http://localhost:3000"
+   const domain = process.env.BACKEND_URL;
+   
   const handleMessage = async (e) => {
     e.preventDefault();
     setLoading(true);

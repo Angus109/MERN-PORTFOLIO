@@ -111,7 +111,7 @@ export const logout = catchAsyncErrors(async (req, res, next) => {
     .cookie("token", "", {
       httpOnly: true,
       expires: new Date(Date.now()),
-    })
+       })
     .json({
       success: true,
       message: "Logged Out!",
@@ -208,7 +208,7 @@ export const updatePassword = catchAsyncErrors(async (req, res, next) => {
 });
 
 export const getUserForPortfolio = catchAsyncErrors(async (req, res, next) => {
-  const id = "663296a896e553748ab5b0be";
+  const id = "66897788abca4031a49e9f85";
   const user = await User.findById(id);
   res.status(200).json({
     success: true,
