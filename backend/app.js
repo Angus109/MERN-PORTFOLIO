@@ -20,9 +20,9 @@ const BACKEND_URL = process.env.BACKEND_URL;
 
 app.use(
   cors({
-    origin: [PORTFOLIO_URL, DASHBOARD_URL, BACKEND_URL],
+    // origin: [PORTFOLIO_URL, DASHBOARD_URL, BACKEND_URL],
     methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
+    // credentials: true,
   })
 );
 
