@@ -128,7 +128,7 @@ export const getUser = () => async (dispatch) => {
   dispatch(userSlice.actions.loadUserRequest());
   try {
     const { data } = await axios.get("https://mern-portfolio-0moh.onrender.com/api/v1/user/me", {
-      withCredentials: true,
+      withCredentials: true, headers: { "Content-Type": "application/json" }
     });
     dispatch(userSlice.actions.loadUserSuccess(data.user));
     dispatch(userSlice.actions.clearAllErrors());
@@ -141,7 +141,7 @@ export const logout = () => async (dispatch) => {
   try {
     const { data } = await axios.get(
       "https://mern-portfolio-0moh.onrender.com/api/v1/user/logout",
-      { withCredentials: true }
+      { withCredentials: true, headers: { "Content-Type": "application/json" } }
     );
     dispatch(userSlice.actions.logoutSuccess(data.message));
     dispatch(userSlice.actions.clearAllErrors());

@@ -58,7 +58,7 @@ export const getAllMessages = () => async (dispatch) => {
   try {
     const response = await axios.get(
       "https://mern-stack-portfolio-backend-code.onrender.com/api/v1/message/getall",
-      { withCredentials: true }
+      { withCredentials: true, headers: { "Content-Type": "application/json" } }
     );
     dispatch(
       messageSlice.actions.getAllMessagesSuccess(response.data.messages)

@@ -90,7 +90,7 @@ const Portfolio = ({projects}) => {
                           <span>Github</span>
                         </Button>
                       </Link>
-                      <Link to={`/project/${element._id}`} key={element._id} target="_blank">
+                      <Link to={`/project/${element._id}`} key={element._id} >
                         <Button className="rounded-[30px] flex items-center gap-2 flex-row">
                           <span>
                             <ExternalLink />
@@ -130,7 +130,7 @@ const Portfolio = ({projects}) => {
                           <span>Github</span>
                         </Button>
                       </Link>
-                      <Link to={`/project/${element._id}`} key={element._id} target="_blank">
+                      <Link to={`/project/${element._id}`} key={element._id} >
                         <Button className="rounded-[30px] flex items-center gap-2 flex-row">
                           <span>
                             <ExternalLink />
