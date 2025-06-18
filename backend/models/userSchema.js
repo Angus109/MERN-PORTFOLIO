@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 import crypto from "crypto"
 
 const JWT_EXPIRES = "180d";
-const JWT_SECRET_KEY = "d82335b227e71a6ad8573c1ebd4fa621e92b8297";
+const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY;
 
 const userSchema = new mongoose.Schema({
   fullName: {

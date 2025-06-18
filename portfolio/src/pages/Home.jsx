@@ -12,44 +12,75 @@ import Footer from "./miniComponents/Footer";
 import axios from "axios";
 
 
+const TEMP_URL = "https://mern-portfolio-0moh.onrender.com"
+import Header from "./miniComponents/Header";
+
+
 
 
 
 const Home = () => {
 
   const [user, setUser] = useState({});
+  const [skills, setSkills] = useState([]);
+  const [projects, setProjects] = useState([]);
   const [loading, setLoad] = useState(false)
 
 
-  const domain = process.env.BACKEND_URL
+  const domain = process.env.BACKEND_URL || TEMP_URL
   console.log(domain)
 
+  const getMySkills = async () => {
+    const { data } = await axios.get(
+      `${domain}/api/v1/skill/getall`,
+      { withCredentials: true }
+    );
+    setSkills(data.skills);
+  };
+
+  const getMyProfile = async () => {
+    const { data } = await axios.get(
+      `${domain}/api/v1/user/portfolio/me`,
+      { withCredentials: true }
+    );
+    setUser(data.user);
+    setLoad(true)
+  };
+  const getMyProjects = async () => {
+    const { data } = await axios.get(
+      `${domain}/api/v1/project/getall`,
+      { withCredentials: true }
+    );
+    setProjects(data.projects);
+  };
+
   useEffect(() => {
-    const getMyProfile = async () => {
-      const { data } = await axios.get(
-        `${domain}/api/v1/user/portfolio/me`,
-        { withCredentials: true }
-      );
-      setUser(data.user);
-      setLoad(true)
-    };
+
     getMyProfile();
     setLoad(false)
+    getMySkills();
+    getMyProjects();
+
   }, []);
 
 
   return (
     <>
-      {loading == true ? (<article className="px-5 mt-10 sm:mt-14 md:mt-16 lg:mt-24 xl:mt-32 sm:mx-auto w-full max-w-[1050px] flex flex-col gap-14">
-        <Hero />
-        <Timeline />
-        <About />
-        <Skills />
-        <Portfolio />
-        <MyApps />
-        <Contact />
-        <Footer />
-      </article>) : ( <Pageload />)}
+      {loading == true ? (
+        <div>
+          <Header user={user} />
+          <article className="px-5 mt-10 sm:mt-14 md:mt-16 lg:mt-16 xl:mt-16 sm:mx-auto w-full max-w-[1050px] flex flex-col gap-14">
+
+            <Hero user={user} />
+            {/* <Timeline /> */}
+            <About user={user} />
+            <Skills skills={skills} />
+            <Portfolio projects={projects} />
+            <MyApps />
+            <Contact user={user}/>
+            <Footer user={user} />
+          </article>
+        </div>) : (<Pageload />)}
     </>
   );
 };

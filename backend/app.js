@@ -13,7 +13,7 @@ import projectRouter from "./routes/projectRouter.js";
 import userRouter from "./routes/userRouter.js";
 
 const app = express();
-dotenv.config({path: "config.env" });
+dotenv.config({path: ".env" });
 const PORTFOLIO_URL = process.env.PORTFOLIO_URL;
 const DASHBOARD_URL = process.env.DASHBOARD_URL;
 const BACKEND_URL = process.env.BACKEND_URL;

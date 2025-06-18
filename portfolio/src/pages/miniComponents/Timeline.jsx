@@ -1,11 +1,12 @@
 import axios from "axios";
 import { User } from "lucide-react/dist/cjs/lucide-react";
 import React, { useEffect, useState } from "react";
+const TEMP_URL="https://mern-portfolio-0moh.onrender.com"
 
 const Timeline = () => {
   const [timeline, setTimeline] = useState([]);
 
-  const domain = process.env.BACKEND_URL;
+  const domain = process.env.BACKEND_URL || TEMP_URL;
 
   useEffect(() => {
     const getMyTimeline = async () => {

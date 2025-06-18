@@ -12,7 +12,7 @@ import {
 } from "../controller/userController.js";
 import { isAuthenticated } from "../middlewares/auth.js";
 
-const router = express.Router();
+// const router = express.Router();
 const userRouter = express.Router();
 
 

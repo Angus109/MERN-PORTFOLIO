@@ -14,9 +14,10 @@ import {
   Youtube,
 } from "lucide-react";
 
-const Portfolio = () => {
+
+const Portfolio = ({projects}) => {
   const [viewAll, setViewAll] = useState(false);
-  const [projects, setProjects] = useState([]);
+
 
   const truncateDescription = (element) => {
     const description = element.description;
@@ -34,23 +35,9 @@ const Portfolio = () => {
 
 
 
-
-
-  const domain = process.env.BACKEND_URL;
-
-  useEffect(() => {
-    const getMyProjects = async () => {
-      const { data } = await axios.get(
-        `${domain}/api/v1/project/getall`,
-        { withCredentials: true }
-      );
-      setProjects(data.projects);
-    };
-    getMyProjects();
-  }, []);
   return (
     <>
-      {projects && projects.length !==0 && <div>
+      {projects && projects.length !==0 && <div id="projects">
         <div className="relative mb-12">
           <h1
             className="hidden sm:flex gap-4 items-center text-[2rem] sm:text-[2.75rem] md:text-[3rem] 

@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { Pagination, FreeMode } from 'swiper/modules';
+const TEMP_URL="https://mern-portfolio-0moh.onrender.com"
 
 
 
@@ -12,7 +13,7 @@ import { Pagination, FreeMode } from 'swiper/modules';
 const MyApps = () => {
   const [apps, setApps] = useState([]);
 
-  const domain = process.env.BACKEND_URL;
+  const domain = process.env.BACKEND_URL || TEMP_URL ;
 
   useEffect(() => {
     const getMyApps = async () => {

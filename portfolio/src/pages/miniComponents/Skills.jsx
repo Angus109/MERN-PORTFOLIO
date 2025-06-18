@@ -9,26 +9,18 @@ import 'swiper/css/free-mode';
 
 // import required modules
 import { FreeMode, Pagination } from 'swiper/modules';
+const TEMP_URL="https://mern-portfolio-0moh.onrender.com"
 
 
 
-const Skills = () => {
-  const [skills, setSkills] = useState([]);
+const Skills = ({skills}) => {
 
-  const domain = process.env.BACKEND_URL;
 
-  useEffect(() => {
-    const getMySkills = async () => {
-      const { data } = await axios.get(
-        `${domain}/api/v1/skill/getall`,
-        { withCredentials: true }
-      );
-      setSkills(data.skills);
-    };
-    getMySkills();
-  }, []);
+  const domain = process.env.BACKEND_URL || TEMP_URL;
+
+
   return (
-    <div className="w-full">
+    <div id="skills" className="w-full">
       {skills && skills.length !== 0 && <div className="w-full relative flex flex-col gap-8 sm:gap-12">
         <h1 className="text-tubeLight-effect text-[2rem] sm:text-[2.75rem] md:text-[3rem] lg:text-[3.8rem] tracking-[15px] dancing_text mx-auto w-fit">
           FRAMEWORKS

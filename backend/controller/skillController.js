@@ -10,14 +10,15 @@ export const addNewSkill = catchAsyncErrors(async (req, res, next) => {
   const { svg } = req.files;
   const { title, proficiency } = req.body;
   if (!title || !proficiency) {
-    return next(new ErrorHandler("Please Fill Full Form!", 402));
-  }
+    return next(new ErrorHandler("Please Fill Full Form!", 400));
+3  }
   const cloudinaryResponse = await cloudinary.uploader.upload(
     svg.tempFilePath,
     { folder: "PORTFOLIO SKILL IMAGES" }
   );
-  if (!cloudinaryResponse || cloudinaryResponse.error) {
-    console.error(
+  
+    if (!cloudinaryResponse || cloudinaryResponse.error) {
+      console.error(
       "Cloudinary Error:",
       cloudinaryResponse.error || "Unknown Cloudinary error"
     );

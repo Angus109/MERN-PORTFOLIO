@@ -3,6 +3,7 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { Button } from "@/components/ui/button";
+const TEMP_URL="https://mern-portfolio-0moh.onrender.com"
 
 const ProjectView = () => {
   const [title, setTitle] = useState("");
@@ -16,7 +17,7 @@ const ProjectView = () => {
   const [projectBannerPreview, setProjectBannerPreview] = useState("");
   const { id } = useParams();
   
-  const domain = process.env.BACKEND_URL;
+  const domain = process.env.BACKEND_URL || TEMP_URL;
 
   useEffect(() => {
     const getProject = async () => {
