@@ -1,92 +1,78 @@
-import { Card } from "@/components/ui/card";
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { Swiper, SwiperSlide } from 'swiper/react';
-// Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/free-mode';
+import { Card } from "@/components/ui/card"
+import { Swiper, SwiperSlide } from "swiper/react"
+import "swiper/css"
+import "swiper/css/pagination"
+import "swiper/css/free-mode"
+import { FreeMode, Pagination } from "swiper/modules"
 
-// import required modules
-import { FreeMode, Pagination } from 'swiper/modules';
-const TEMP_URL="https://mern-portfolio-0moh.onrender.com"
-
-
-
-const Skills = ({skills}) => {
-
-
-  const domain = process.env.BACKEND_URL || TEMP_URL;
-
-
+const Skills = ({ skills }) => {
   return (
-    <div id="skills" className="w-full">
-      {skills && skills.length !== 0 && <div className="w-full relative flex flex-col gap-8 sm:gap-12">
-        <h1 className="text-tubeLight-effect text-[2rem] sm:text-[2.75rem] md:text-[3rem] lg:text-[3.8rem] tracking-[15px] dancing_text mx-auto w-fit">
-          FRAMEWORKS
-        </h1>
+    <div id="skills" className="w-full py-12 sm:py-16 lg:py-20">
+      {skills && skills.length !== 0 && (
+        <div className="w-full">
+          {/* Section Title */}
+          <div className="text-center mb-12 sm:mb-16">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-[8px] sm:tracking-[12px] lg:tracking-[15px] bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              FRAMEWORKS
+            </h1>
+          </div>
 
-
-        <Swiper
-          slidesPerView={2}
-          spaceBetween={50}
-          style={{
-            "--swiper-pagination-color": "#FFBA08",
-            "--swiper-pagination-bullet-inactive-color": "#999999",
-            "--swiper-pagination-bullet-inactive-opacity": "1",
-            "--swiper-pagination-bullet-size": "16px",
-            "--swiper-pagination-bullet-horizontal-gap": "6px"
-          }}
-          breakpoints={{
-
-            // when window width is >= 480px
-            480: {
-              slidesPerView: 3,
-              // spaceBetween: 50
-
-            },
-            576: {
-              slidesPerView: 3,
-              // spaceBetween: 100
-         
-            },
-
-            1024: {
-              slidesPerView: 4,
-              // spaceBetween: 100
-     
-            }
-          }}
-          freeMode={true}
-          pagination={{
-            clickable: true,
-          }}
-          modules={[FreeMode, Pagination]}
-          className="mySwiper w-full py-10"
-        >
-          {skills &&
-            skills.map((element) => {
-              return (
-                <SwiperSlide>
-                  <Card key={element._id} className="h-fit w-full p-7 flex flex-col justify-center items-center">
-                    <img
-                      src={element.svg && element.svg.url}
-                      alt="skill"
-                      className="h-12 sm:h-24 w-auto"
-                    />
-                    <p className="text-muted-foreground text-center">
-                      {element.title}
-                    </p>
+          {/* Skills Swiper */}
+          <div className="w-full">
+            <Swiper
+              slidesPerView={1}
+              spaceBetween={20}
+              style={{
+                "--swiper-pagination-color": "#3b82f6",
+                "--swiper-pagination-bullet-inactive-color": "#cbd5e1",
+                "--swiper-pagination-bullet-inactive-opacity": "1",
+                "--swiper-pagination-bullet-size": "12px",
+                "--swiper-pagination-bullet-horizontal-gap": "4px",
+                paddingBottom: "50px",
+              }}
+              breakpoints={{
+                480: {
+                  slidesPerView: 2,
+                  spaceBetween: 20,
+                },
+                640: {
+                  slidesPerView: 3,
+                  spaceBetween: 24,
+                },
+                1024: {
+                  slidesPerView: 4,
+                  spaceBetween: 32,
+                },
+              }}
+              freeMode={true}
+              pagination={{
+                clickable: true,
+              }}
+              modules={[FreeMode, Pagination]}
+              className="w-full py-4"
+            >
+              {skills.map((element) => (
+                <SwiperSlide key={element._id}>
+                  <Card className="h-full w-full p-4 sm:p-6 flex flex-col justify-center items-center hover:shadow-lg transition-shadow duration-300 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                    <div className="w-full flex flex-col items-center text-center">
+                      <img
+                        src={element.svg && element.svg.url}
+                        alt={element.title}
+                        className="h-12 sm:h-16 lg:h-20 w-auto mb-3 object-contain"
+                      />
+                      <p className="text-muted-foreground text-sm sm:text-base font-medium break-words">
+                        {element.title}
+                      </p>
+                    </div>
                   </Card>
                 </SwiperSlide>
-              );
-            })}
-        </Swiper>
-
-
-      </div>}
+              ))}
+            </Swiper>
+          </div>
+        </div>
+      )}
     </div>
-  );
-};
+  )
+}
 
-export default Skills;
+export default Skills

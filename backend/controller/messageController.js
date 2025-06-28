@@ -1,6 +1,7 @@
 import { Message } from "../models/messageSchema.js";
 import { catchAsyncErrors } from "../middlewares/catchAsyncErrors.js";
 import ErrorHandler from "../middlewares/error.js";
+import { contactMail } from "../utils/contact.js";
 
 export const sendMessage = catchAsyncErrors(async (req, res, next) => {
   const { senderName, subject, message } = req.body;
@@ -8,6 +9,9 @@ export const sendMessage = catchAsyncErrors(async (req, res, next) => {
     return next(new ErrorHandler("Please Fill Full Form!", 400));
   }
   const data = await Message.create({ senderName, subject, message });
+
+  await contactMail(req.body)
+
   res.status(201).json({
     success: true,
     message: "Message Sent",
